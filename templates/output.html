@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='image/background.png') }}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            color: black; /* Set default text color to improve contrast */
+            text-align: center;
+        }
+        h2 {
+            color: black;
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+        label {
+            margin: 20px;
+            font-size: larger;
+            font-weight: bold;
+            color: black;
+        }
+        /* Style for prediction text */
+        .prediction-text {
+            font-size: 1.5rem; /* Larger font size */
+            font-weight: bold;  /* Bold text */
+            color: black;     /* Optional: Yellow color for emphasis */
+            margin: 20px 0;
+        }
+        /* Style for button link */
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: black; /* Blue button color */
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .button-link:hover {
+            background-color: red; /* Darker blue on hover */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+</head>
+<body>
+    <h2>Prediction Result</h2>
+    <p class="prediction-text">{{ prediction_text }}</p>
+   
+    <!-- Link styled as a button -->
+    <a href="/" class="button-link">Make another prediction</a>
+</body>
+</html>
