@@ -64,7 +64,7 @@ def ask_details():
                  session['neighborhood'] = neighborhood_number
                  message = f" {session['name']}! neighborhood number not recognized. Please enter a valid neighborhood."
                 else:
-                 message = f"{session['name']}, Please help with the distance to your neighborhood."
+                 message = f"{session['name']}, Please help with the distance to your neighborhood , in Km."
                  step+=1
             else:
         # Check if the input is a neighborhood name
@@ -77,9 +77,9 @@ def ask_details():
                    message = f"{session['name']}, neighborhood name not recognized. Please enter a valid neighborhood."
             #   step += 1
         elif step == 4:
-            data['distance'] = float(request.form['distance'])
+            data['distance'] = int(request.form['distance'])
             message = f"{session['name']},Please fill in the details below."
-            step += 1
+            step +=1
         elif step == 5:
             # Collect remaining details and convert them to float
             data.update({

@@ -84,7 +84,7 @@
         
          {% elif step ==4 %}
             <label for="distance">Distance to Neighborhood:</label>
-            <input type="text" id="distance" name="distance" required>
+            <input type="number" id="distance" name="distance" required>
             
         {% elif step == 5 %}
             <label for="reviews">Reviews:</label>
@@ -102,12 +102,16 @@
             <label for="minute">Minute:</label>
             <input type="number" id="minute" name="minute" required>
             <label for="private_room">Private Room:</label>
-            <input type="number" id="private_room" name="private_room" required>
+            <input type="number" id="private_room" name="private_room"  placeholder="Enter 1 if yes else 0" required>
             <label for="shared_room">Shared Room:</label>
-            <input type="number" id="shared_room" name="shared_room" required>
+            <input type="number" id="shared_room" name="shared_room" placeholder="Enter 1 if yes else 0" required>
         {% endif %}    
 
         <button type = "Submit">Submit</button>
+
+        <div id="message" style="margin-top: 20px; color: black; font-weight: bold;" >
+            {{ "For entire appartment fill 0 at both private and shared room"  }}
+        </div>
     </form>
     
 </body>
