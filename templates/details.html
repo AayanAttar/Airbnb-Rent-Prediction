@@ -8,16 +8,16 @@
             margin: 30px;
             padding: 30px;
             display: grid;
-            background-image: url("{{ url_for('static', filename='image/background.png') }}");
+            background-image: url("{{ url_for('static', filename='image/airbnb-logo.jpg') }}");
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
             background-size: cover; /* Ensures the image covers the entire body area */
             
-            text-shadow: 1px 1px 1px black;
+            text-shadow: 1px 1px 1px white;
         }
         h2 {
-            color: black;
+            color: white;
             
         }
         form {
@@ -31,7 +31,7 @@
             margin-top: 20px;
             font-weight: bold;
             font-size: larger;
-            color: black;
+            color: white;
         }
         input{
             padding: 10px;
@@ -45,7 +45,7 @@
         button{
             background-color: black;
             color: white;
-            border: 2px solid;
+            border: 1px solid;
             border-color: black;
             padding: 10px 10px;
             border-radius: 8px;
@@ -54,6 +54,21 @@
         }
         button:hover {
             background-color: red;
+        }
+        footer {
+            position: fixed;
+            bottom: 20px;  /* Distance from the bottom */
+            left: 50%;
+            transform: translateX(-50%);  /* To center it horizontally */
+            font-size: 1rem;
+            color: black;
+            font-weight: bold;;
+            font-size: larger;
+            text-shadow: 1px 1px 1px black;
+        }
+        footer .heart {
+            color: red;
+            font-size: larger;
         }
     </Style>
 </head>
@@ -72,7 +87,7 @@
          {% elif step ==3 %}
             <label for="neighborhood">Neighborhood(Name or Number):</label>
             <input type="text" id="neighborhood" name="neighborhood" required>   
-            <div class = "neighborhood-list">
+            <div class = "neighborhood-list" style="color: white;">
                 <strong>Available Neighborhoods</strong>
                 <ul>
                     {% for name , number in neighborhood_mapping.items() %}
@@ -105,14 +120,20 @@
             <input type="number" id="private_room" name="private_room"  placeholder="Enter 1 if yes else 0" required>
             <label for="shared_room">Shared Room:</label>
             <input type="number" id="shared_room" name="shared_room" placeholder="Enter 1 if yes else 0" required>
+
+            <div id="message" style="margin-top: 20px; color: white; font-weight: bold; font-size: larger;" >
+                {{ "For entire appartment fill 0 at both private and shared room"  }}
+            </div>
         {% endif %}    
 
         <button type = "Submit">Submit</button>
 
-        <div id="message" style="margin-top: 20px; color: black; font-weight: bold;" >
-            {{ "For entire appartment fill 0 at both private and shared room"  }}
-        </div>
+        
     </form>
+
+    <footer>
+        Made with <span class="heart">❤️</span> by Aayan
+    </footer>
     
 </body>
 </html>
