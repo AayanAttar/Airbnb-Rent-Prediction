@@ -2,138 +2,142 @@
 <head>
     <meta charset="UTF-8">
     <title>Airbnb</title>
-    <Style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 30px;
             padding: 30px;
             display: grid;
-            background-image: url("{{ url_for('static', filename='image/airbnb-logo.jpg') }}");
+            background-image: url("{{ url_for('static', filename='image/logo.1.jpg') }}");
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
-            background-size: cover; /* Ensures the image covers the entire body area */
-            
-            text-shadow: 1px 1px 1px white;
+            background-size: cover;
+            text-shadow: 1px 1px 2px #FF69B4; /* Neon pink glow */
         }
+
         h2 {
-            color: white;
-            
+            color: #FFFFFF; /* White text for headings */
+            text-shadow: 2px 2px 5px #FF69B4; /* Neon pink glow */
+            font-size: 2rem;
         }
-        form {
-            display: flexbox;
-            flex-direction: column;
-            /* align-items: stretch; */
-            width: fit-content;
-        }
-        
-        label{
-            margin-top: 20px;
+
+        form label {
+            color: #FFFFFF; /* White for labels */
+            text-shadow: 1px 1px 2px #FF69B4; /* Soft pink glow */
             font-weight: bold;
-            font-size: larger;
-            color: white;
+            font-size: 1.2rem;
+            margin-top: 15px;
         }
-        input{
+
+        input {
             padding: 10px;
-            border: 2px solid ;
+            border: 2px solid #FFFFFF; /* White border for better visibility */
             border-radius: 8px;
             margin-bottom: 20px;
-            font-size: large;
+            font-size: 1rem;
             font-family: 'Arial';
-            font-style: italic;
+            background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+            color: black; /* Dark text for contrast */
         }
-        button{
-            background-color: black;
+
+        input::placeholder {
+            color: #A9A9A9; /* Light gray placeholder text */
+        }
+
+        button {
+            background-color: #FF69B4; /* Neon pink button */
             color: white;
-            border: 1px solid;
-            border-color: black;
-            padding: 10px 10px;
+            border: 2px solid #FFFFFF;
+            padding: 10px 15px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
+            text-shadow: 1px 1px 2px #000000; /* Subtle shadow for button text */
         }
+
         button:hover {
-            background-color: red;
+            background-color: #A020F0; /* Purple hover effect */
+            border-color: #FF69B4; /* Neon border on hover */
+            text-shadow: 1px 1px 5px #FFFFFF; /* Glow effect */
         }
+
         footer {
             position: fixed;
-            bottom: 20px;  /* Distance from the bottom */
+            bottom: 20px;
             left: 50%;
-            transform: translateX(-50%);  /* To center it horizontally */
+            transform: translateX(-50%);
             font-size: 1rem;
-            color: black;
-            font-weight: bold;;
-            font-size: larger;
-            text-shadow: 1px 1px 1px black;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #FF69B4; /* Pink glow */
         }
+
         footer .heart {
             color: red;
             font-size: larger;
+            text-shadow: 1px 1px 2px white; /* Glow effect on the heart */
         }
-    </Style>
+    </style>
 </head>
 <body>
-    <h2>{{message}}</h2>
-    <form method = "POST" action="/">
-        <input type="hidden" name = "step" value = "{{ step }}">
+    <h2>{{ message }}</h2>
+    <form method="POST" action="/">
+        <input type="hidden" name="step" value="{{ step }}">
 
-        {% if step ==1 %}
+        {% if step == 1 %}
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-        {% elif step ==2 %}
-            
-        
-         {% elif step ==3 %}
-            <label for="neighborhood">Neighborhood(Name or Number):</label>
-            <input type="text" id="neighborhood" name="neighborhood" required>   
-            <div class = "neighborhood-list" style="color: white;">
-                <strong>Available Neighborhoods</strong>
-                <ul>
-                    {% for name , number in neighborhood_mapping.items() %}
-                        <li> {{number}} {{":"}} {{name}}</li>
-                    {% endfor %}
-                </ul>
+        {% elif step == 2 %}
+        <!-- Add step 2 content here -->
 
-            </div>
-        
-         {% elif step ==4 %}
-            <label for="distance">Distance to Neighborhood:</label>
-            <input type="number" id="distance" name="distance" required>
-            
+        {% elif step == 3 %}
+        <label for="neighborhood">Neighborhood (Name or Number):</label>
+        <input type="text" id="neighborhood" name="neighborhood" required>
+        <div class="neighborhood-list" style="color: white;">
+            <strong>Available Neighborhoods</strong>
+            <ul>
+                {% for name, number in neighborhood_mapping.items() %}
+                <li>{{ number }}: {{ name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        {% elif step == 4 %}
+        <label for="distance">Distance to Neighborhood:</label>
+        <input type="number" id="distance" name="distance" required>
+
         {% elif step == 5 %}
-            <label for="reviews">Reviews:</label>
-            <input type="number" id="reviews" name="reviews" step="any" required>
-            <label for="satisfaction">Satisfaction:</label>
-            <input type="number" id="satisfaction" name="satisfaction" step="any" required>
-            <label for="accommodates">Accommodates:</label>
-            <input type="number" id="accommodates" name="accommodates" required>
-            <label for="bedrooms">Bedrooms:</label>
-            <input type="number" id="bedrooms" name="bedrooms" required>
-            <label for="day">Day:</label>
-            <input type="number" id="day" name="day" required>
-            <label for="hour">Hour:</label>
-            <input type="number" id="hour" name="hour" required>
-            <label for="minute">Minute:</label>
-            <input type="number" id="minute" name="minute" required>
-            <label for="private_room">Private Room:</label>
-            <input type="number" id="private_room" name="private_room"  placeholder="Enter 1 if yes else 0" required>
-            <label for="shared_room">Shared Room:</label>
-            <input type="number" id="shared_room" name="shared_room" placeholder="Enter 1 if yes else 0" required>
+        <label for="reviews">Reviews:</label>
+        <input type="number" id="reviews" name="reviews" step="any" required>
+        <label for="satisfaction">Satisfaction:</label>
+        <input type="number" id="satisfaction" name="satisfaction" step="any" required>
+        <label for="accommodates">Accommodates:</label>
+        <input type="number" id="accommodates" name="accommodates" required>
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required>
+        <label for="day">Day:</label>
+        <input type="number" id="day" name="day" required>
+        <label for="hour">Hour:</label>
+        <input type="number" id="hour" name="hour" required>
+        <label for="minute">Minute:</label>
+        <input type="number" id="minute" name="minute" required>
+        <label for="private_room">Private Room:</label>
+        <input type="number" id="private_room" name="private_room" placeholder="Enter 1 if yes, else 0" required>
+        <label for="shared_room">Shared Room:</label>
+        <input type="number" id="shared_room" name="shared_room" placeholder="Enter 1 if yes, else 0" required>
+        <div id="message" style="margin-top: 20px; color: white; font-weight: bold; font-size: larger;">
+            {{ "For entire apartment, fill 0 for both private and shared room" }}
+        </div>
+        {% endif %}
 
-            <div id="message" style="margin-top: 20px; color: white; font-weight: bold; font-size: larger;" >
-                {{ "For entire appartment fill 0 at both private and shared room"  }}
-            </div>
-        {% endif %}    
-
-        <button type = "Submit">Submit</button>
-
-        
+        <button type="submit">Submit</button>
     </form>
 
     <footer>
         Made with <span class="heart">❤️</span> by Aayan
     </footer>
-    
 </body>
 </html>

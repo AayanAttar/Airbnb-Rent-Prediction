@@ -4,47 +4,70 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url("{{ url_for('static', filename='image/background.png') }}");
+            background-image: url("{{ url_for('static', filename='image/logo.1.jpg') }}");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
-            color: black; /* Set default text color to improve contrast */
-            text-align: center;
+            color: white; /* Default text color for contrast */
+            text-align: left; /* Center alignment for text */
+            margin: 0;
+            padding: 0;
         }
+
         h2 {
-            color: black;
-            font-size: 2rem;
-            margin-top: 20px;
+            color: white;
+            font-size: 2.5rem;
+            margin-top: 30px;
+            text-shadow: 2px 2px 5px #FF69B4; /* Neon pink glow for the heading */
         }
-        label {
-            margin: 20px;
-            font-size: larger;
-            font-weight: bold;
-            color: black;
-        }
-        /* Style for prediction text */
+
         .prediction-text {
-            font-size: 1.5rem; /* Larger font size */
-            font-weight: bold;  /* Bold text */
-            color: black;     /* Optional: Yellow color for emphasis */
-            margin: 20px 0;
+            font-size: 1.8rem; /* Slightly larger font size */
+            font-weight: bold; /* Bold text for emphasis */
+            color: white; /* White text for readability */
+            text-shadow: 1px 1px 3px #FF69B4; /* Subtle pink glow */
+            margin: 20px auto;
+            max-width: 80%; /* Restrict text width for better readability */
+            line-height: 1.6; /* Improved line spacing */
         }
-        /* Style for button link */
+
         .button-link {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 12px 25px;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: white;
-            background-color: black; /* Blue button color */
+            color: white; /* White text for the button */
+            background-color: #FF69B4; /* Neon pink button background */
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for a 3D effect */
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px black; /* Shadow for button text */
         }
+
         .button-link:hover {
-            background-color: red; /* Darker blue on hover */
+            background-color: #A020F0; /* Purple hover effect */
+            text-shadow: 1px 1px 5px #FFFFFF; /* Glow effect on hover */
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 20px; /* Distance from the bottom */
+            left: 50%;
+            transform: translateX(-50%); /* Center footer horizontally */
+            font-size: 1rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #FF69B4; /* Pink glow effect */
+        }
+
+        footer .heart {
+            color: red;
+            font-size: larger;
+            text-shadow: 1px 1px 2px white; /* Glow effect on the heart */
         }
     </style>
     <meta charset="UTF-8">
@@ -56,5 +79,9 @@
    
     <!-- Link styled as a button -->
     <a href="/" class="button-link">Make another prediction</a>
+
+    <footer>
+        Made with <span class="heart">❤️</span> by Aayan
+    </footer>
 </body>
 </html>
